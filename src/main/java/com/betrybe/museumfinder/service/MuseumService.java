@@ -1,0 +1,42 @@
+package com.betrybe.museumfinder.service;
+
+import com.betrybe.museumfinder.database.MuseumFakeDatabase;
+import com.betrybe.museumfinder.exception.InvalidCoordinateException;
+import com.betrybe.museumfinder.model.Coordinate;
+import com.betrybe.museumfinder.model.Museum;
+import com.betrybe.museumfinder.util.CoordinateUtil;
+import org.springframework.stereotype.Service;
+
+/**
+ * Class representing a museumService.
+ */
+@Service
+public class MuseumService implements MuseumServiceInterface {
+  
+  private final MuseumFakeDatabase museumDatabase;
+
+  public MuseumService(MuseumFakeDatabase museumDatabase) {
+    this.museumDatabase = museumDatabase;
+  }
+
+  @Override
+  public Museum createMuseum(Museum museum) {
+    if (!CoordinateUtil.isCoordinateValid(museum.getCoordinate())) {
+      throw new InvalidCoordinateException();
+    }
+
+    Museum savedMuseum = museumDatabase.saveMuseum(museum);
+
+    return savedMuseum;
+  }
+
+  @Override
+  public Museum getClosestMuseum(Coordinate coordinate, Double maxDistance) {
+    return null;
+  }
+
+  @Override
+  public Museum getMuseum(Long id) {
+    return null;
+  }
+}
