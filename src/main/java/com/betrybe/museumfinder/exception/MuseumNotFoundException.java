@@ -1,5 +1,8 @@
 package com.betrybe.museumfinder.exception;
 
-public class MuseumNotFoundException extends RuntimeException{
+/**
+ * Class representing a museumNotFoundException.
+ */
+public class MuseumNotFoundException extends RuntimeException {
     
 }
